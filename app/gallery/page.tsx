@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import GalleryGrid from '@/components/GalleryGrid';
+import { restaurant } from '@/lib/current';
 
 export default function GalleryPage() {
   return (
@@ -31,7 +32,7 @@ export default function GalleryPage() {
           </div>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
             A visual journey through the culinary delights and luxurious ambiance of{' '}
-            <span className="text-[#D4AF37]">The Stove Club</span>.
+            <span className="text-[#D4AF37]">{restaurant.name}</span>.
           </p>
         </motion.div>
 

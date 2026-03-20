@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import HeroSection from '@/components/HeroSection';
 import StatsSection from '@/components/StatsSection';
 import { FiArrowRight } from 'react-icons/fi';
+import { restaurant } from '@/lib/current';
 
 export default function Home() {
   return (
@@ -27,7 +28,7 @@ export default function Home() {
               Experience the True Taste of <span className="text-[#D4AF37]">Late Night Dining</span>
             </h2>
             <p className="font-sans text-gray-400 text-lg leading-relaxed mb-6">
-              Welcome to The Stove Club, Karachi&apos;s most premium late-night restaurant. Located in the bustling heart of Gulshan-e-Iqbal, we pride ourselves on offering an exceptional culinary experience designed for night owls and food enthusiasts alike.
+              Welcome to {restaurant.name}, Karachi&apos;s most premium late-night restaurant. Located in the bustling heart of Gulshan-e-Iqbal, we pride ourselves on offering an exceptional culinary experience designed for night owls and food enthusiasts alike.
             </p>
             <p className="font-sans text-gray-400 text-lg leading-relaxed mb-8">
               Whether you&apos;re craving a juicy steak, flavorful grills, or a comforting dessert after midnight, our extensive menu has something for everyone. Join us for dine-in, or enjoy our flavors from the comfort of your home with our prompt takeout and delivery services.

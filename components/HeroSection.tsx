@@ -89,7 +89,7 @@ export default function HeroSection() {
           variants={itemVariants}
           className="text-[#D4AF37] tracking-[0.2em] uppercase text-sm md:text-md mb-4 font-semibold font-sans drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
         >
-          Welcome to
+          Welcome to {restaurant.name.split(' ')[0]}
         </motion.p>
         
         <div className="overflow-hidden mb-6">

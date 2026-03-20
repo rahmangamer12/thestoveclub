@@ -2,24 +2,25 @@
 
 import { motion } from 'framer-motion';
 import { FaStar, FaGoogle, FaMoneyBillWave } from 'react-icons/fa';
+import { restaurant } from '@/lib/current';
 
 export default function StatsSection() {
   const stats = [
     {
       icon: <FaStar className="text-[#D4AF37] text-3xl mb-3" />,
-      title: "4.3 Star Rating",
+      title: `${restaurant.rating} Star Rating`,
       desc: "Exceptional dining experience"
     },
     {
       icon: <FaGoogle className="text-white text-3xl mb-3" />,
-      title: "2,414+ Reviews",
+      title: `${restaurant.reviews}+ Reviews`,
       desc: "Trusted by our community"
     },
-    {
+    ...(restaurant.priceRange ? [{
       icon: <FaMoneyBillWave className="text-[#10B981] text-3xl mb-3" />,
-      title: "Rs 1,000 - 2,000",
+      title: restaurant.priceRange,
       desc: "Average cost per person"
-    }
+    }] : [])
   ];
 
   const containerVariants = {
