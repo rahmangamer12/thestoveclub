@@ -87,6 +87,7 @@ export const RESTAURANT_CONFIGS: RestaurantConfig[] = [
     reviews: "117",
     priceRange: "Rs 500–1,000",
     services: ["Dine-in", "Drive-through", "Delivery"],
+    instagram: "instagram.com/hot_n_roll_gulshan_e_iqbal",
     website: "hotnroll.vercel.app"
   }
 ];
