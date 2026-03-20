@@ -2,35 +2,36 @@
 
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhoneAlt, FaClock, FaInstagram } from 'react-icons/fa';
+import { restaurant } from '@/lib/current';
 
 export default function ContactInfo() {
   const infoItems = [
     {
       icon: <FaMapMarkerAlt className="text-[#D4AF37] text-xl" />,
       title: "Address",
-      content: "Shop 16, Time Square, Block 6, Gulshan-e-Iqbal, Karachi",
+      content: restaurant.address,
       isLink: false
     },
     {
       icon: <FaPhoneAlt className="text-[#D4AF37] text-xl" />,
       title: "Phone",
-      content: "+92 311 8135074",
-      href: "tel:+923118135074",
+      content: restaurant.phone,
+      href: `tel:${restaurant.phone.replace(/\s+/g, '')}`,
       isLink: true
     },
     {
       icon: <FaClock className="text-[#D4AF37] text-xl" />,
       title: "Hours",
-      content: "6:00 PM to 4:30 AM — 7 days a week",
+      content: restaurant.hours,
       isLink: false
     },
-    {
+    ...(restaurant.instagram ? [{
       icon: <FaInstagram className="text-[#D4AF37] text-xl" />,
       title: "Instagram",
-      content: "@thestoveclub",
-      href: "https://instagram.com/thestoveclub",
+      content: `@${restaurant.instagram.split('/').filter(Boolean).pop()}`,
+      href: restaurant.instagram.startsWith('http') ? restaurant.instagram : `https://${restaurant.instagram}`,
       isLink: true
-    }
+    }] : [])
   ];
 
   return (
@@ -80,15 +81,11 @@ export default function ContactInfo() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-10 pt-8 border-t border-white/10 flex flex-wrap gap-3"
         >
-          <span className="px-4 py-2 bg-[#0a0a0a] border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-semibold uppercase tracking-wider rounded">
-            Dine-in
-          </span>
-          <span className="px-4 py-2 bg-[#0a0a0a] border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-semibold uppercase tracking-wider rounded">
-            Takeout
-          </span>
-          <span className="px-4 py-2 bg-[#0a0a0a] border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-semibold uppercase tracking-wider rounded">
-            Delivery
-          </span>
+          {restaurant.services.map(service => (
+            <span key={service} className="px-4 py-2 bg-[#0a0a0a] border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-semibold uppercase tracking-wider rounded">
+              {service}
+            </span>
+          ))}
         </motion.div>
       </motion.div>
     </div>

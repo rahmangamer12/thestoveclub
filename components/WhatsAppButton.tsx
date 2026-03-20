@@ -3,9 +3,12 @@
 import { FaWhatsapp } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import { restaurant } from '@/lib/current';
 
 export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
+
+  if (!restaurant.whatsapp) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
@@ -25,7 +28,7 @@ export default function WhatsAppButton() {
       </AnimatePresence>
       
       <motion.a
-        href="https://wa.me/923118135074"
+        href={`https://wa.me/${restaurant.whatsapp}`}
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg shadow-[#25D366]/30 hover:bg-[#20bd5a] transition-colors"

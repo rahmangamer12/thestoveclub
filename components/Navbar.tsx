@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaFire } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { restaurant } from '@/lib/current';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -41,7 +42,7 @@ export default function Navbar() {
               <FaFire size={28} className="drop-shadow-[0_0_10px_rgba(212,175,55,0.8)]" />
             </motion.div>
             <span className="font-playfair text-2xl md:text-3xl font-bold text-[#D4AF37] tracking-wider group-hover:text-white transition-colors duration-500">
-              THE STOVE CLUB
+              {restaurant.name.toUpperCase()}
             </span>
           </Link>
 

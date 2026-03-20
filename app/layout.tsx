@@ -5,14 +5,15 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import CursorGlow from '@/components/CursorGlow';
+import { restaurant } from '@/lib/current';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
 
 export const metadata: Metadata = {
-  title: 'The Stove Club | Late Night Restaurant Gulshan-e-Iqbal Karachi',
-  description: 'Best late night dining in Gulshan-e-Iqbal Karachi. Open 6PM to 4:30AM. Dine-in, Takeout and Delivery. 4.3 stars on Google with 2414 reviews.',
-  keywords: 'restaurant karachi, gulshan iqbal restaurant, late night dining karachi, stove club'
+  title: `${restaurant.name} | Restaurant`,
+  description: `Best dining at ${restaurant.name}. ${restaurant.hours}. ${restaurant.services.join(', ')}.`,
+  keywords: `restaurant, ${restaurant.name.toLowerCase()}, dining`
 };
 
 export default function RootLayout({

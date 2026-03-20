@@ -30,11 +30,7 @@ function Lightbox({ index, onClose, onPrev, onNext }: {
   onPrev: () => void;
   onNext: () => void;
 }) {
-  const [loaded, setLoaded] = useState(false);
   const img = galleryImages[index];
-
-  // Reset loaded on image change
-  useEffect(() => { setLoaded(false); }, [index]);
 
   return createPortal(
     <>
@@ -197,15 +193,12 @@ function Lightbox({ index, onClose, onPrev, onNext }: {
 
         {/* Image wrapper — click image = do nothing (background click = close) */}
         <div className="lb-img-wrap" onClick={(e) => e.stopPropagation()}>
-          {!loaded && <div className="lb-spin" />}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             key={img.src}
             src={img.src}
             alt={img.category}
             className="lb-img"
-            onLoad={() => setLoaded(true)}
-            style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.3s ease' }}
           />
         </div>
 
@@ -227,9 +220,12 @@ function Lightbox({ index, onClose, onPrev, onNext }: {
 
 export default function GalleryGrid() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsClient(true);
+  }, []);
 
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
   const goPrev = useCallback(() => setLightboxIndex(i => i !== null ? (i - 1 + galleryImages.length) % galleryImages.length : null), []);
@@ -288,7 +284,7 @@ export default function GalleryGrid() {
       </div>
 
       {/* Lightbox — rendered via Portal directly into document.body */}
-      {mounted && lightboxIndex !== null && (
+      {isClient && lightboxIndex !== null && (
         <Lightbox
           index={lightboxIndex}
           onClose={closeLightbox}
